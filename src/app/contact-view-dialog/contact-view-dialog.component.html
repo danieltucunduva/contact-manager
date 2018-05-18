@@ -1,0 +1,36 @@
+<form class="contact-form">
+  <h1 mat-dialog-title>
+    <mat-form-field class="full"*ngIf="!displayed">
+      <input type="text" matInput disabled value="{{ data.name }}" placeholder="Name">
+    </mat-form-field>
+    <mat-form-field class="full"*ngIf="displayed">
+      <input type="text" matInput value="{{ data.name }}" placeholder="Name">
+    </mat-form-field>
+  </h1>
+  <div mat-dialog-content *ngIf="!displayed">
+    <mat-form-field class="full">
+      <input type="text" matInput disabled value="{{ data.company }}" placeholder="Company">
+    </mat-form-field>
+    <mat-form-field class="full">
+      <input type="text" matInput disabled value="{{ data.address }}" placeholder="Address">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-content *ngIf="displayed">
+    <mat-form-field class="full">
+      <input type="text" matInput value="{{ data.company }}" placeholder="Company" [(ngModel)]="data.company" name="company">
+    </mat-form-field>
+    <mat-form-field class="full">
+      <input type="text" matInput value="{{ data.address }}" placeholder="Address" [(ngModel)]="data.address" name="address">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button *ngIf="!displayed" mat-raised-button color="accent" (click)="displayForm()">
+      <mat-icon class="mat-24">mode_edit</mat-icon> Update</button>
+    <button *ngIf="!displayed" mat-raised-button color="warn" (click)="openConfirmDeleteDialog(data._id)">
+      <mat-icon class="mat-24">delete</mat-icon> Delete</button>
+    <button *ngIf="displayed" mat-raised-button color="accent" (click)="save(data._id, data)">
+      <mat-icon class="mat-24">save</mat-icon> Save</button>
+    <button mat-raised-button color="primary" (click)="close()">
+      <mat-icon class="mat-24">close</mat-icon> Close</button>
+  </div>
+</form>

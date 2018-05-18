@@ -1,0 +1,18 @@
+
+Windwos PowerShell commands
+
+
+// MongoDB
+
+mongod --config="C:\MongoDB\mongo.config"
+
+mongo --port 27017 --host localhost
+
+
+// Angular server and API
+
+cd c:/Dev/temporary/contact-manager;
+ng serve
+
+cd c:/Dev/temporary/contact-manager;
+node src/api/app.js

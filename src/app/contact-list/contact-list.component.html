@@ -1,0 +1,37 @@
+<div>
+  <mat-table [dataSource]="dataSource">
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.name }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="company">
+      <mat-header-cell *matHeaderCellDef>Company</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.company }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef>Address</mat-header-cell>
+      <mat-cell *matCellDef="let element">{{ element.address }}</mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="view">
+      <mat-header-cell *matHeaderCellDef>View</mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <button mat-mini-fab color="primary" (click)="openDialog(element._id)">
+          <mat-icon class="mat-24">remove_red_eye</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+  </mat-table>
+  <div>
+    <h1>
+      <button mat-fab (click)="openAddDialog()">
+        <mat-icon class="mat-24">note_add</mat-icon>
+      </button>
+    </h1>
+  </div>
+</div>
